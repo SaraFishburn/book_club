@@ -1,0 +1,18 @@
+<h1> List Authors</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Books</th>
+  </tr>
+  <% @authors.each do |author| %>
+    <tr>
+    <td><%= link_to author.full_name, author_path(author) %></td>
+    <td>
+      <% author.books.each do |book| %>
+        <p><%= link_to book.title, book_path(book) %></p>
+      <% end %>
+    </td>
+    </tr>
+  <% end %>
+</table>

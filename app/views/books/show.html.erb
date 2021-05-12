@@ -1,0 +1,25 @@
+<%# <style> %>
+
+  <%# body { %>
+    <%# background: url(<%= url_for(@book.cover) %>
+  <%# } %>
+<%# </style> %>
+
+<h2><%= @book.title %></h2>
+<h3>By <%= @book.author.full_name %></h3>
+<p><strong>Genres: </strong> <%= @book.genres_to_csv %></p>
+
+<% if @book.cover.attached? %>
+<p>
+  <%= cl_image_tag @book.cover.key, crop: :scale, width: 200, cloud_name: 'sazza' %>
+</p>
+<% end %>
+
+<hr>
+<p>
+  <%= link_to "<< Back", :back %> 
+  | 
+  <%= link_to "Edit", edit_book_path%>
+  | 
+  <%= link_to "Delete", @book, method: :delete, data:  { confirm: "are you sure?" } %>
+</p>
