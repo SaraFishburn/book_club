@@ -31,7 +31,7 @@ class BookPolicy
   end
 
   def destroy?
-    false
+    user.has_role? :admin
   end
 
   class Scope
